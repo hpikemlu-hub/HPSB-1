@@ -1,0 +1,301 @@
+/* Professional Badge System Styles for Ministry of Foreign Affairs */
+/* Enhanced animations and effects for government-grade UI */
+
+@layer components {
+  /* Subtle pulse animation for active elements */
+  @keyframes pulse-gentle {
+    0%, 100% { 
+      opacity: 1; 
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.95; 
+      transform: scale(1.02);
+    }
+  }
+
+  /* Elegant glow effect for premium badges */
+  @keyframes subtle-glow {
+    0%, 100% { 
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  /* Professional shimmer effect for director badges */
+  @keyframes director-shimmer {
+    0% { 
+      background-position: -200% 0;
+    }
+    100% { 
+      background-position: 200% 0;
+    }
+  }
+
+  /* Floating animation for special status indicators */
+  @keyframes float-gentle {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% { 
+      transform: translateY(-2px) rotate(0.5deg);
+    }
+    66% { 
+      transform: translateY(-1px) rotate(-0.3deg);
+    }
+  }
+
+  /* Gradient breathing effect for admin badges */
+  @keyframes gradient-breath {
+    0%, 100% {
+      background-size: 100% 100%;
+    }
+    50% {
+      background-size: 110% 110%;
+    }
+  }
+
+  /* Professional badge base styles */
+  .professional-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Director level - Premium red gradient with crown authority */
+  .badge-director {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+    border: 2px solid rgba(248, 113, 113, 0.4);
+    box-shadow: 
+      0 8px 25px rgba(220, 38, 38, 0.25),
+      0 4px 12px rgba(220, 38, 38, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: pulse-gentle 3s ease-in-out infinite;
+  }
+
+  .badge-director:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+      0 12px 35px rgba(220, 38, 38, 0.4),
+      0 8px 20px rgba(220, 38, 38, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .badge-director::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease-in-out;
+  }
+
+  .badge-director:hover::before {
+    left: 100%;
+  }
+
+  /* Coordinator level - Professional purple with star leadership */
+  .badge-coordinator {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%);
+    border: 2px solid rgba(167, 139, 250, 0.4);
+    box-shadow: 
+      0 6px 20px rgba(124, 58, 237, 0.25),
+      0 3px 10px rgba(124, 58, 237, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .badge-coordinator:hover {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 
+      0 10px 30px rgba(124, 58, 237, 0.35),
+      0 5px 15px rgba(124, 58, 237, 0.25);
+  }
+
+  /* Staff level - Professional blue with shield protection */
+  .badge-staff {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+    border: 2px solid rgba(96, 165, 250, 0.4);
+    box-shadow: 
+      0 4px 15px rgba(37, 99, 235, 0.25),
+      0 2px 8px rgba(37, 99, 235, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .badge-staff:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 
+      0 8px 25px rgba(37, 99, 235, 0.35),
+      0 4px 12px rgba(37, 99, 235, 0.25);
+  }
+
+  /* Golongan IV - Highest civil service rank */
+  .badge-golongan-iv {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+    border: 2px solid rgba(248, 113, 113, 0.5);
+    box-shadow: 
+      0 6px 20px rgba(239, 68, 68, 0.3),
+      0 0 15px rgba(239, 68, 68, 0.2);
+    position: relative;
+    animation: subtle-glow 4s ease-in-out infinite;
+  }
+
+  .badge-golongan-iv::after {
+    content: '★';
+    position: absolute;
+    top: -8px;
+    right: -6px;
+    font-size: 12px;
+    color: #fbbf24;
+    animation: float-gentle 3s ease-in-out infinite;
+  }
+
+  /* Golongan III - Professional blue rank */
+  .badge-golongan-iii {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    border: 2px solid rgba(96, 165, 250, 0.5);
+    box-shadow: 
+      0 5px 18px rgba(59, 130, 246, 0.28),
+      0 0 12px rgba(59, 130, 246, 0.18);
+  }
+
+  /* Golongan II - Professional green rank */
+  .badge-golongan-ii {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    border: 2px solid rgba(52, 211, 153, 0.5);
+    box-shadow: 
+      0 5px 18px rgba(16, 185, 129, 0.28),
+      0 0 12px rgba(16, 185, 129, 0.18);
+  }
+
+  /* Golongan I - Entry level orange rank */
+  .badge-golongan-i {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+    border: 2px solid rgba(251, 191, 36, 0.5);
+    box-shadow: 
+      0 5px 18px rgba(245, 158, 11, 0.28),
+      0 0 12px rgba(245, 158, 11, 0.18);
+  }
+
+  /* Admin role - Special red with enhanced authority */
+  .badge-admin {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 50%, #7f1d1d 100%);
+    border: 2px solid rgba(239, 68, 68, 0.6);
+    box-shadow: 
+      0 8px 25px rgba(185, 28, 28, 0.4),
+      0 4px 12px rgba(185, 28, 28, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: gradient-breath 3s ease-in-out infinite;
+  }
+
+  .badge-admin::before {
+    content: '🔒';
+    position: absolute;
+    top: -6px;
+    right: -4px;
+    font-size: 10px;
+    animation: float-gentle 2.5s ease-in-out infinite;
+  }
+
+  /* Active status - Green with pulse */
+  .badge-status-active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    border: 2px solid rgba(52, 211, 153, 0.6);
+    box-shadow: 
+      0 6px 20px rgba(16, 185, 129, 0.3),
+      0 0 15px rgba(16, 185, 129, 0.2);
+    animation: pulse-gentle 2s ease-in-out infinite;
+  }
+
+  /* Inactive status - Red with subtle warning */
+  .badge-status-inactive {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+    border: 2px solid rgba(248, 113, 113, 0.5);
+    box-shadow: 
+      0 4px 15px rgba(239, 68, 68, 0.25),
+      0 0 10px rgba(239, 68, 68, 0.15);
+  }
+
+  /* Responsive badge sizing */
+  .badge-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.375rem;
+  }
+
+  .badge-md {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+  }
+
+  .badge-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .badge-xl {
+    padding: 0.625rem 1.25rem;
+    font-size: 1.125rem;
+    border-radius: 1rem;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .professional-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+    
+    .badge-director::after,
+    .badge-admin::before,
+    .badge-golongan-iv::after {
+      display: none; /* Hide decorative elements on small screens */
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .professional-badge {
+      border-width: 3px;
+      font-weight: 700;
+    }
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .professional-badge,
+    .professional-badge::before,
+    .professional-badge::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Animation classes for utility */
+  .animate-pulse-gentle {
+    animation: pulse-gentle 3s ease-in-out infinite;
+  }
+
+  .animate-subtle-glow {
+    animation: subtle-glow 4s ease-in-out infinite;
+  }
+
+  .animate-float-gentle {
+    animation: float-gentle 3s ease-in-out infinite;
+  }
+
+  .animate-gradient-breath {
+    animation: gradient-breath 3s ease-in-out infinite;
+  }
+}

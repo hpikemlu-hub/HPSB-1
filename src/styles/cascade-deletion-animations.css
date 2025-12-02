@@ -1,0 +1,413 @@
+/* ========================================
+   CASCADE DELETION MODAL ANIMATIONS
+   Professional "Hidup" Animations for HPI Sosbud
+   ======================================== */
+
+/* ===== MODAL ENTRY ANIMATIONS ===== */
+@keyframes modalEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ===== CARD INTERACTION ANIMATIONS ===== */
+@keyframes cardHover {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  }
+  100% {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+  }
+}
+
+@keyframes cardSelect {
+  0% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.02);
+    background-color: rgb(239 246 255 / 0.8);
+  }
+}
+
+/* ===== PROGRESS ANIMATIONS ===== */
+@keyframes progressFill {
+  0% {
+    width: 0%;
+    opacity: 0.5;
+  }
+  100% {
+    width: var(--progress-value);
+    opacity: 1;
+  }
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgb(59 130 246 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgb(59 130 246 / 0.8);
+  }
+}
+
+/* ===== SUCCESS CELEBRATION ANIMATIONS ===== */
+@keyframes successPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scale(1.1);
+    opacity: 0.95;
+  }
+}
+
+@keyframes successGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgb(34 197 94 / 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgb(34 197 94 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(34 197 94 / 0);
+  }
+}
+
+/* ===== ATTENTION ANIMATIONS ===== */
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes warningBlink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* ===== LOADING ANIMATIONS ===== */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Professional Transitions */
+.transition-smooth {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-bounce {
+  transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.transition-spring {
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation Classes */
+.animate-modal-entry {
+  animation: modalEntry 300ms ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 300ms ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 300ms ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out forwards;
+}
+
+.animate-card-hover:hover {
+  animation: cardHover 200ms ease-out forwards;
+}
+
+.animate-card-select {
+  animation: cardSelect 300ms ease-out forwards;
+}
+
+.animate-progress-fill {
+  animation: progressFill 800ms ease-out forwards;
+}
+
+.animate-progress-glow {
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+.animate-success-pulse {
+  animation: successPulse 1s ease-in-out 3;
+}
+
+.animate-success-glow {
+  animation: successGlow 1.5s ease-out forwards;
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+.animate-warning-blink {
+  animation: warningBlink 1.5s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ===== ENHANCED STATES ===== */
+
+/* Hover Enhancement */
+.enhanced-hover {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enhanced-hover:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.12);
+}
+
+/* Focus Enhancement */
+.enhanced-focus {
+  transition: all 200ms ease-out;
+}
+
+.enhanced-focus:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+}
+
+/* Selection States */
+.selection-ring {
+  transition: all 300ms ease-out;
+}
+
+.selection-ring.selected {
+  box-shadow: 0 0 0 2px rgb(59 130 246), 0 0 0 4px rgb(59 130 246 / 0.2);
+  background-color: rgb(239 246 255 / 0.8);
+}
+
+/* ===== STEP TRANSITION ANIMATIONS ===== */
+.step-enter {
+  animation: slideInFromRight 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.step-exit {
+  animation: slideInFromBottom 300ms ease-in forwards reverse;
+}
+
+/* Staggered Animation Delays */
+.animate-stagger-1 { animation-delay: 0ms; }
+.animate-stagger-2 { animation-delay: 100ms; }
+.animate-stagger-3 { animation-delay: 200ms; }
+.animate-stagger-4 { animation-delay: 300ms; }
+.animate-stagger-5 { animation-delay: 400ms; }
+
+/* ===== RESPONSIVE ANIMATIONS ===== */
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .animate-modal-entry {
+    animation: fadeIn 200ms ease-out forwards;
+  }
+  
+  .enhanced-hover:hover {
+    transform: none;
+  }
+}
+
+/* ===== SPECIALIZED CASCADE DELETION ANIMATIONS ===== */
+
+/* Impact Card Reveal */
+@keyframes impactCardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotateX(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+.animate-impact-card {
+  animation: impactCardReveal 400ms ease-out forwards;
+}
+
+/* Choice Selection Ripple */
+@keyframes choiceRipple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-choice-ripple {
+  animation: choiceRipple 300ms ease-out forwards;
+}
+
+/* Processing Stage Flow */
+@keyframes stageFlow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-stage-flow {
+  animation: stageFlow 500ms ease-out forwards;
+}
+
+/* Final Success Burst */
+@keyframes successBurst {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-success-burst {
+  animation: successBurst 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}

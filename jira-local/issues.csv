@@ -1,0 +1,36 @@
+Summary,Issue Type,Description,Priority,Status,Epic Link,Labels,Assignee,Component,Sprint,Parent,Story Points,Estimate (h)
+"Productionize RLS & Security",Epic,"Perkuat kebijakan RLS produksi, proteksi service role, validasi request, rate limiting, indexing/caching.",High,To Do,,security;rls;backend,,,,-,
+"Terapkan improved RLS policies (prod)",Task,"Terapkan improved-rls-policies.sql, verifikasi semua CRUD path, pastikan tidak ada bypass.",High,In Progress,"Productionize RLS & Security",rls;database,Backend-Dev-Specialist,Database,Sprint 1,,8,24
+"Review semua RLS tabel prioritas",Sub-task,"Audit RLS pada tabel employees, workload, calendar_events.",High,In Review,,rls;database,Backend-Dev-Specialist,Database,Sprint 1,"Terapkan improved RLS policies (prod)",3,8
+"Uji CRUD di bawah RLS",Sub-task,"Verifikasi create/read/update/delete dengan peran berbeda.",High,In Progress,,rls;qa,Backend-Dev-Specialist,Database,Sprint 1,"Terapkan improved RLS policies (prod)",3,8
+"Perbaiki policy & tambah index",Sub-task,"Perbaiki policy yang gagal dan tambahkan index untuk kueri berat.",Medium,To Do,,rls;performance,Backend-Dev-Specialist,Database,Sprint 1,"Terapkan improved RLS policies (prod)",2,6
+"Audit penggunaan Service Role; pastikan tidak terekspos",Task,"Audit kode & env, pastikan service role hanya dipakai di server-side, rotasi kunci.",High,To Do,"Productionize RLS & Security",security;ops,Backend-Dev-Specialist,Backend,, ,5,10
+"Middleware validasi request + sanitasi input",Task,"Tambahkan validasi skema (zod/yup) dan sanitasi untuk semua endpoint penting.",High,To Do,"Productionize RLS & Security",backend;api;security,Backend-Dev-Specialist,Backend,, ,5,12
+"Rate limiting untuk API publik",Task,"Tambah rate limit untuk endpoint publik agar tahan abuse (mis. 100 req/10m per IP).",Medium,To Do,"Productionize RLS & Security",api;security,Backend-Dev-Specialist,Backend,, ,3,8
+"Review indexing & caching untuk query berat",Task,"Profiling query Calendar/Workload, tambah index yang perlu, pertimbangkan caching read-heavy.",Medium,To Do,"Productionize RLS & Security",database;performance,Backend-Dev-Specialist,Database,, ,3,8
+"Monitoring, Backup & Reliability",Epic,"Siapkan APM/monitoring, backup otomatis, dan latihan rollback untuk kesiapan produksi.",High,To Do,,ops;reliability,,,,-,
+"Setup APM, error tracking, uptime monitoring",Task,"Integrasi Sentry/LogRocket/APM, healthcheck, alerting dasar.",High,In Progress,"Monitoring, Backup & Reliability",ops;monitoring,Fullstack-Dev,Ops,Sprint 1,,5,16
+"Integrasi Sentry backend",Sub-task,"Sentrikan API routes dan edge functions; tangkap error dan performance.",High,In Progress,,ops;monitoring,Backend-Dev-Specialist,Ops,Sprint 1,"Setup APM, error tracking, uptime monitoring",3,8
+"Integrasi Sentry frontend",Sub-task,"Aktifkan SDK di Next.js; sourcemap, tracing navigasi.",Medium,In Progress,,ops;monitoring,Frontend-Dev,Frontend,Sprint 1,"Setup APM, error tracking, uptime monitoring",3,8
+"Setup uptime monitor & alerts",Sub-task,"Health check endpoint + notifikasi Slack/Email.",Medium,To Do,,ops;monitoring,Fullstack-Dev,Ops,Sprint 1,"Setup APM, error tracking, uptime monitoring",2,6
+"Jadwal backup otomatis + uji restore",Task,"Konfigurasi backup harian di Supabase/DB, uji pemulihan, dokumentasikan SOP.",High,To Do,"Monitoring, Backup & Reliability",backup;ops,,Database,, ,5,12
+"Latihan rollback (drill) rilis produksi",Task,"Simulasikan rollback Vercel + restore DB, buat checklist rilis+rollback.",Medium,To Do,"Monitoring, Backup & Reliability",ops;release,,Ops,, ,3,8
+"Accessibility & Performance",Epic,"Penuhi WCAG 2.1 AA, dan capai budget performa interaksi <300ms.",Medium,To Do,,frontend;ux;performance,,,,-,
+"Audit aksesibilitas (WCAG 2.1 AA)",Task,"Jalankan audit (axe/lighthouse), perbaiki kontras, fokus, ARIA, keyboard nav.",Medium,To Do,"Accessibility & Performance",a11y;frontend,UI-UX-Designer,Frontend,Sprint 2,,5,12
+"Penuhi performance budget (<300ms interaksi)",Task,"Profiling komponen berat (Calendar/Enhanced Tables), lazy-load, memo, prefetch.",Medium,To Do,"Accessibility & Performance",performance;frontend,Frontend-Dev,Frontend,Sprint 2,,5,14
+"Kompatibilitas browser wajib (pemerintahan)",Task,"Uji Chrome/Edge, fallback fitur, progresif enhancement.",Low,To Do,"Accessibility & Performance",qa;frontend,QA-Engineer,Frontend,Sprint 2,,3,8
+"Calendar & Realtime Hardening",Epic,"Perkuat alur Calendar dan sinkronisasi realtime, termasuk auto-complete perjalanan dinas.",High,To Do,,calendar;realtime,,,,-,
+"Verifikasi cron auto-complete perjalanan dinas",Task,"Pastikan edge function + cron jalan, audit log lengkap.",High,In Review,"Calendar & Realtime Hardening",calendar;realtime,Fullstack-Dev,Calendar,Sprint 1,,5,10
+"Cek schedule cron & env",Sub-task,"Pastikan jadwal cron aktif, variabel env terisi benar.",High,Done,,calendar;realtime,Fullstack-Dev,Calendar,Sprint 1,"Verifikasi cron auto-complete perjalanan dinas",2,4
+"Uji edge function manual",Sub-task,"Trigger fungsi secara manual dan verifikasi perubahan data.",Medium,In Review,,calendar;realtime,Fullstack-Dev,Calendar,Sprint 1,"Verifikasi cron auto-complete perjalanan dinas",2,4
+"Audit log & notifikasi",Sub-task,"Pastikan audit log terekam dan notifikasi (jika ada) terkirim.",Medium,To Do,,calendar;realtime,Fullstack-Dev,Calendar,Sprint 1,"Verifikasi cron auto-complete perjalanan dinas",2,4
+"Uji edge case realtime (sinkron multi-klien)",Task,"Tes subscribe/unsubscribe, konflik update, offline/online.",Medium,To Do,"Calendar & Realtime Hardening",realtime;qa,QA-Engineer,Calendar,Sprint 2,,5,10
+"Tes integrasi Calendar ↔ Workload ↔ Dashboard",Task,"E2E data flow: event → workload/todo → dashboard metrics.",Medium,To Do,"Calendar & Realtime Hardening",integration;qa,Fullstack-Dev,Fullstack,Sprint 2,,5,12
+"Dokumentasi & Runbook",Epic,"Lengkapi dokumentasi operasional dan API agar mudah dioperasikan dan dipelihara.",Medium,To Do,,docs;ops,,,,-,
+"Tambahkan OpenAPI spec untuk API",Task,"Definisikan endpoint, payload, error, auth. Publish ke repo.",Medium,To Do,"Dokumentasi & Runbook",docs;api,Backend-Dev-Specialist,Backend,Sprint 2,,5,12
+"Buat Ops Playbook (alerting, on-call, SOP incident)",Task,"Langkah saat insiden: identifikasi, eskalasi, mitigasi, komunikasi.",Low,To Do,"Dokumentasi & Runbook",ops;docs,Fullstack-Dev,Ops,Sprint 2,,3,8
+"Materi pelatihan pengguna (panduan singkat)",Task,"Quick guide untuk Calendar/Workload/Employees + FAQ.",Low,To Do,"Dokumentasi & Runbook",docs;training,UI-UX-Designer,UX,Sprint 2,,3,6
+"Deployment & CI/CD",Epic,"Siapkan pipeline lint/type/test/smoke, gating sebelum rilis.",Medium,To Do,,devops;ci,,,,-,
+"Siapkan pipeline CI (lint, typecheck, tests, smoke)",Task,"Konfig GitHub Actions, jalankan quick-smoke + verify-integration.",Medium,To Do,"Deployment & CI/CD",ci;testing,QA-Engineer,DevOps,Sprint 2,,5,10
+"E2E smoke sebelum rilis (skrip + checklist)",Task,"Jalankan skrip e2e minimum sebelum deploy prod.",Medium,To Do,"Deployment & CI/CD",testing;release,QA-Engineer,QA,Sprint 2,,3,8
+"Release checklist & approval gate",Task,"Checklist wajib (DB migration, backup, health check, rollback siap).",Medium,To Do,"Deployment & CI/CD",release;ops,Fullstack-Dev,Ops,Sprint 2,,3,6

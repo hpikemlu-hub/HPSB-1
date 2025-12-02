@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  command = "npm run build && npm run export"
+
+[context.branch-deploy]
+  command = "npm run build && npm run export"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "nft"
+
+# Environment variables for production
+# Add these in Netlify dashboard:
+# NEXT_PUBLIC_SUPABASE_URL
+# NEXT_PUBLIC_SUPABASE_ANON_KEY
+# SUPABASE_SERVICE_ROLE_KEY

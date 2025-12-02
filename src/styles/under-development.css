@@ -1,0 +1,504 @@
+/* Under Development Pages - Professional Government Styling */
+/* HPI Sosbud Kemlu - Government Blue Theme */
+
+:root {
+  /* Government Blue Color Palette */
+  --gov-blue-primary: #1e40af;
+  --gov-blue-secondary: #3b82f6;
+  --gov-blue-light: #dbeafe;
+  --gov-blue-dark: #1e3a8a;
+  --gov-indigo: #4f46e5;
+  --gov-navy: #1e293b;
+  
+  /* Glass Morphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  /* Animation Timings */
+  --animation-fast: 0.2s;
+  --animation-normal: 0.3s;
+  --animation-slow: 0.5s;
+  --animation-ultra-slow: 2s;
+}
+
+/* Floating Animation Keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Professional Animation Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.6s ease-out forwards;
+}
+
+.animate-slide-in-top {
+  animation: slideInFromTop 0.6s ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 0.6s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-rotate-glow {
+  animation: rotateGlow 8s linear infinite;
+}
+
+/* Glass Morphism Effects */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-button {
+  background: rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all var(--animation-normal) ease;
+}
+
+.glass-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Professional Gradient Backgrounds */
+.gradient-gov-blue {
+  background: linear-gradient(135deg, #1e40af, #3b82f6, #6366f1);
+}
+
+.gradient-gov-blue-light {
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff, #f3f4f6);
+}
+
+.gradient-animated {
+  background: linear-gradient(
+    45deg,
+    #1e40af,
+    #3b82f6,
+    #6366f1,
+    #8b5cf6,
+    #3b82f6,
+    #1e40af
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 5s ease infinite;
+}
+
+/* Professional Card Styling */
+.dev-card {
+  transition: all var(--animation-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dev-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.dev-card:hover::before {
+  left: 100%;
+}
+
+.dev-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Progressive Enhancement Animations */
+.stagger-animation {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInFromBottom 0.6s ease forwards;
+}
+
+.stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading Spinner Government Style */
+.gov-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #1e40af;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Professional Status Indicators */
+.status-indicator {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.status-indicator::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.development::before {
+  background-color: #f59e0b;
+}
+
+.status-indicator.planning::before {
+  background-color: #6b7280;
+}
+
+.status-indicator.complete::before {
+  background-color: #10b981;
+}
+
+/* Micro-interactions */
+.interactive-element {
+  transition: all var(--animation-fast) ease;
+  cursor: pointer;
+}
+
+.interactive-element:hover {
+  transform: scale(1.05);
+}
+
+.interactive-element:active {
+  transform: scale(0.98);
+}
+
+/* Professional Typography Enhancements */
+.text-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #1e40af, #3b82f6, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .dev-card {
+    margin-bottom: 1rem;
+  }
+  
+  .animate-float,
+  .animate-float-reverse {
+    animation-duration: 4s;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-reverse,
+  .animate-pulse-glow,
+  .animate-gradient,
+  .animate-rotate-glow {
+    animation: none;
+  }
+  
+  .dev-card:hover {
+    transform: none;
+  }
+  
+  .interactive-element:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #1e40af;
+  }
+  
+  .text-gradient {
+    -webkit-text-fill-color: unset;
+    background: none;
+    color: #1e40af;
+  }
+}
+
+/* Enhanced Professional Animation Utilities */
+@layer utilities {
+  .dev-slide-in-left {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+  }
+
+  .dev-slide-in-right {
+    animation: slideInFromRight 0.8s ease-out forwards;
+  }
+
+  .dev-slide-in-top {
+    animation: slideInFromTop 0.8s ease-out forwards;
+  }
+
+  .dev-slide-in-bottom {
+    animation: slideInFromBottom 0.8s ease-out forwards;
+  }
+
+  .dev-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .dev-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .dev-hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dev-hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Enhanced Professional Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #1e40af, #3b82f6, #6366f1, #8b5cf6);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Professional Status Indicators */
+  .status-operational {
+    background: linear-gradient(135deg, #10b981, #059669);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-development {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-maintenance {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Enhanced Loading States */
+  .loading-dots {
+    display: inline-block;
+  }
+
+  .loading-dots::after {
+    content: '';
+    animation: dots 1.5s steps(5, end) infinite;
+  }
+
+  @keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+  }
+
+  /* Professional Typography */
+  .text-government {
+    color: var(--gov-blue-primary);
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(30, 64, 175, 0.1);
+  }
+
+  .heading-professional {
+    background: linear-gradient(135deg, var(--gov-navy), var(--gov-blue-primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .animate-float,
+  .animate-float-reverse,
+  .animate-pulse-glow,
+  .animate-gradient,
+  .animate-rotate-glow,
+  .glass-card::before {
+    animation: none;
+  }
+  
+  .glass-card {
+    background: white;
+    border: 1px solid #1e40af;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+}
