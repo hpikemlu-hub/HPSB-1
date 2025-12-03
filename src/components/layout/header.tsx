@@ -33,7 +33,7 @@ export function Header({ user, onMenuToggle, onSidebarToggle, sidebarCollapsed }
   const handleSignOut = async () => {
     try {
       setIsLoading(true);
-      await supabase.auth.signOut();
+      await import("../../lib/auth-helpers").then(m => m.signOut());
       router.push('/auth/login');
     } catch (error) {
       console.error('Error signing out:', error);

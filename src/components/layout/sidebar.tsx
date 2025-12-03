@@ -105,7 +105,7 @@ export function Sidebar({ user, isOpen = true, isCollapsed = false, onClose, onT
   const handleSignOut = async () => {
     try {
       setIsLoading(true);
-      await supabase.auth.signOut();
+      await import("../../lib/auth-helpers").then(m => m.signOut());
       localStorage.removeItem('currentUser');
       router.push('/auth/login');
     } catch (error) {
