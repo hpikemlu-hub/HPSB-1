@@ -35,19 +35,38 @@ export interface SessionData {
 // Helper function to resolve username/email to actual email using server-side API
 async function resolveToEmail(input: string): Promise<string | null> {
   try {
-    const res = await fetch('/api/auth/resolve-username', {
+    // Use full API endpoint path for production
+    const isProd = typeof window !== 'undefined' && window.location.hostname !== 'localhost';
+    const endpoint = isProd ? '/api/auth/resolve-username' : '/api/auth/resolve-username';
+
+    const res = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify({ username: input })
     });
-    
-    const json = await res.json();
-    
-    if (!json.success) {
+
+    // Check for successful response
+    if (!res.ok) {
+      console.error('API call failed:', res.status, await res.text());
       return null;
     }
-    
-    return json.email;
+
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      const body = await res.text();
+      console.error('Unexpected response resolving username:', { status: res.status, contentType, bodyPreview: body.slice(0,200) });
+      return null;
+    }
+
+    const json = await res.json();
+    if (!json.success) {
+      console.error('API returned error:', json.error);
+      return null;
+    }
+    return json.email as string;
   } catch (e) {
     console.error('Resolve username error:', e);
     return null;
@@ -159,6 +178,7 @@ export function createSessionData(user: AuthUser): SessionData {
 // Set user session in cookie
 export function setUserSession(sessionData: SessionData): void {
   Cookies.set('user', JSON.stringify(sessionData), {
+    path: '/',
     expires: 1,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax'

@@ -297,7 +297,7 @@ export function PremiumWorkloadFilters({
                             <div className={`w-3 h-3 rounded-full ${ 
                               status.value === 'pending' ? 'bg-amber-500' :
                               status.value === 'on-progress' ? 'bg-blue-500' :
-                              status.value === 'completed' ? 'bg-green-500' :
+                              status.value === 'done' ? 'bg-green-500' :
                               'bg-gray-500'
                             }`} />
                             <span>{status.label}</span>

@@ -3,11 +3,21 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function middleware(req: NextRequest) {
+  // Check environment variables exist
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('❌ Missing Supabase environment variables in middleware');
+    // Return a response that doesn't depend on Supabase for critical errors
+    return NextResponse.next();
+  }
+
   const res = NextResponse.next();
-  
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get(name: string) {
@@ -32,26 +42,39 @@ export async function middleware(req: NextRequest) {
   );
 
   // Check both Supabase session and our custom cookie session
-  const { data: { session } } = await supabase.auth.getSession();
-  
+  let isAuthenticated = false;
+  try {
+    const { data: { session }, error } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error('❌ Supabase session error:', error);
+    } else if (session) {
+      isAuthenticated = true;
+    }
+  } catch (sessionError) {
+    console.error('❌ Error getting Supabase session:', sessionError);
+  }
+
   // Also check for user cookie session
   const userCookie = req.cookies.get('user')?.value;
   let hasUserSession = false;
   if (userCookie) {
     try {
-      const userData = JSON.parse(userCookie);
+      // Cookies set via js-cookie are URL encoded; decode before parsing
+      const decoded = decodeURIComponent(userCookie);
+      const userData = JSON.parse(decoded);
       hasUserSession = !!(userData.id && userData.email && userData.role);
     } catch {
       hasUserSession = false;
     }
   }
 
-  const isAuthenticated = session || hasUserSession;
+  isAuthenticated = isAuthenticated || hasUserSession;
 
   // Define protected routes
   const protectedRoutes = ['/dashboard', '/workload', '/employees', '/calendar', '/reports', '/e-kinerja', '/history'];
   const authRoutes = ['/auth/login', '/auth/signup'];
-  
+
   const isProtectedRoute = protectedRoutes.some(route => req.nextUrl.pathname.startsWith(route));
   const isAuthRoute = authRoutes.some(route => req.nextUrl.pathname.startsWith(route));
 
@@ -83,6 +106,7 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    // Exclude API routes and static assets from middleware
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };

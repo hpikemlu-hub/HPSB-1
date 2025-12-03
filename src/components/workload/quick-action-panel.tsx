@@ -14,7 +14,7 @@ import {
   Users,
   BarChart3,
   Share,
-  Print,
+  Printer,
   Mail
 } from 'lucide-react';
 import {
@@ -98,7 +98,7 @@ export function QuickActionPanel({ onRefresh }: QuickActionPanelProps) {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => window.print()}>
-            <Print className="h-4 w-4 mr-2" />
+            <Printer className="h-4 w-4 mr-2" />
             Print Current View
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -124,6 +124,7 @@ export function PremiumWorkloadTable({
 
       // Filter by date range
       if (filters.dateFrom || filters.dateTo) {
+        if (!workload.tgl_diterima) return false;
         const workloadDate = new Date(workload.tgl_diterima);
         
         if (filters.dateFrom) {
@@ -321,13 +322,9 @@ export function PremiumWorkloadTable({
 
             <div className="flex items-center space-x-3">
               <PaginationSelector
-                currentPage={currentPage}
-                totalPages={totalPages}
-                itemsPerPage={itemsPerPage}
-                totalItems={totalItems}
-                onPageChange={setCurrentPage}
+                pageSize={itemsPerPage}
                 onPageSizeChange={setItemsPerPage}
-                pageSizeOptions={PAGE_SIZE_OPTIONS}
+                options={PAGE_SIZE_OPTIONS}
               />
             </div>
           </div>
@@ -465,7 +462,7 @@ export function PremiumWorkloadTable({
                   <TableCell className="premium-table-cell">
                     <div className="flex items-center space-x-2 text-sm text-slate-600">
                       <Calendar className="h-4 w-4" />
-                      <span>{formatDate(workload.tgl_diterima)}</span>
+                      <span>{workload.tgl_diterima ? formatDate(workload.tgl_diterima) : '-'}</span>
                     </div>
                   </TableCell>
 
@@ -605,7 +602,7 @@ export function PremiumWorkloadTable({
       {/* DELETE CONFIRMATION DIALOG */}
       <DeleteConfirmationDialog
         isOpen={deleteDialog.isOpen}
-        onClose={handleDeleteCancel}
+        onOpenChange={(open) => !open && handleDeleteCancel()}
         onConfirm={handleDeleteConfirm}
         workload={deleteDialog.workload}
         isLoading={deleteDialog.isLoading}

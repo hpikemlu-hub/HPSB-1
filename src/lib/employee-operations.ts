@@ -454,7 +454,7 @@ export function filterEmployees(
       emp.nip?.toLowerCase().includes(query) ||
       emp.jabatan?.toLowerCase().includes(query) ||
       emp.golongan?.toLowerCase().includes(query) ||
-      emp.username.toLowerCase().includes(query) ||
+      emp.username?.toLowerCase().includes(query) ||
       emp.email?.toLowerCase().includes(query)
     );
   }

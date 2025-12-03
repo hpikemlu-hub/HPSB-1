@@ -147,7 +147,7 @@ export function WorkloadOverviewDashboard({ stats, data, filteredData }: Workloa
 
     // Distribution by type
     const typeDistribution = data.reduce((acc, item) => {
-      const type = item.jenis_kegiatan || 'Unknown';
+      const type = item.type || 'Unknown';
       acc[type] = (acc[type] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);

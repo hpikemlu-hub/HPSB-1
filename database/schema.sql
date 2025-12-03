@@ -19,6 +19,7 @@ CREATE TABLE users (
     email TEXT UNIQUE, -- For Supabase Auth
     role TEXT DEFAULT 'user' CHECK (role IN ('admin', 'user')),
     is_active BOOLEAN DEFAULT true,
+    auth_uid UUID,  -- Maps to Supabase Auth user ID
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );

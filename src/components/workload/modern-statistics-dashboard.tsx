@@ -18,11 +18,11 @@ import {
   Zap,
   Award
 } from 'lucide-react';
-import type { WorkloadItem } from '@/types';
+import type { Workload } from '@/types';
 
 interface ModernStatisticsProps {
-  workloads: WorkloadItem[];
-  filteredWorkloads: WorkloadItem[];
+  workloads: Workload[];
+  filteredWorkloads: Workload[];
 }
 
 interface StatCard {
@@ -283,10 +283,10 @@ export function ModernStatisticsDashboard({ workloads, filteredWorkloads }: Mode
               <p className="text-slate-600">Real-time workload analytics and insights</p>
             </div>
             <div className="hidden sm:flex items-center space-x-3">
-              <ProfessionalBadge variant="success" size="sm">
+              <ProfessionalBadge variant="status-active" size="sm">
                 Live Data
               </ProfessionalBadge>
-              <ProfessionalBadge variant="info" size="sm">
+              <ProfessionalBadge variant="gov-primary" size="sm">
                 {filteredWorkloads.length} Items
               </ProfessionalBadge>
             </div>
