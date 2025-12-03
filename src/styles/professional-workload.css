@@ -463,7 +463,7 @@
 /* Loading States */
 .professional-loading {
   display: flex;
-  items-center;
+
   justify-content: center;
   padding: 3rem;
   background: var(--gov-white);
