@@ -32,6 +32,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import type { User } from '@/types';
+import type { SessionData } from '@/lib/auth-helpers';
 
 const navigation = [
   {
@@ -88,7 +89,7 @@ const navigation = [
 ];
 
 interface SidebarProps {
-  user: User;
+  user: User | SessionData;
   isOpen?: boolean;
   isCollapsed?: boolean;
   onClose?: () => void;

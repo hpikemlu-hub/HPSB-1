@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run netlify-build"
   publish = "out"
 
 [build.environment]
@@ -10,12 +10,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[context.production]
-  command = "npm run build && npm run export"
-
-[context.branch-deploy]
-  command = "npm run build && npm run export"
 
 [functions]
   directory = "netlify/functions"

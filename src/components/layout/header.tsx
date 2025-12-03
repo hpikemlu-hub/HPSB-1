@@ -16,9 +16,10 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Bell, LogOut, Settings, User, Menu } from 'lucide-react';
 import { APP_NAME } from '@/constants';
 import type { User as UserType } from '@/types';
+import type { SessionData } from '@/lib/auth-helpers';
 
 interface HeaderProps {
-  user: UserType;
+  user: UserType | SessionData;
   onMenuToggle?: () => void;
   onSidebarToggle?: () => void;
   sidebarCollapsed?: boolean;

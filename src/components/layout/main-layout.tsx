@@ -4,10 +4,11 @@ import { useState } from 'react';
 import { Header } from './header';
 import { Sidebar } from './sidebar';
 import type { User } from '@/types';
+import type { SessionData } from '@/lib/auth-helpers';
 
 interface MainLayoutProps {
   children: React.ReactNode;
-  user: User;
+  user: User | SessionData;
 }
 
 export function MainLayout({ children, user }: MainLayoutProps) {
