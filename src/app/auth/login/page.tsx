@@ -14,7 +14,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { loginSchema, type LoginFormData } from '@/lib/validations';
 import { APP_NAME, APP_DESCRIPTION } from '@/constants';
-import { authenticateUser, setUserSession, createSessionData } from '@/lib/auth-helpers';
+import { authenticateUser, setUserSession, createSessionData, type AuthResult } from '@/lib/auth-helpers';
 
 export default function LoginPage() {
   const [mounted, setMounted] = useState(false);

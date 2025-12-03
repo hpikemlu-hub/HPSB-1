@@ -115,7 +115,8 @@ export function Sidebar({ user, isOpen = true, isCollapsed = false, onClose, onT
     }
   };
 
-  const getInitials = (name: string) => {
+  const getInitials = (name?: string) => {
+    if (!name) return 'UN';
     return name
       .split(' ')
       .map(n => n[0])
@@ -241,15 +242,15 @@ export function Sidebar({ user, isOpen = true, isCollapsed = false, onClose, onT
                 <div className="flex items-center gap-3 w-full">
                   <Avatar className="h-10 w-10">
                     <AvatarFallback className="bg-blue-100 text-blue-600 font-medium">
-                      {getInitials(user.nama_lengkap)}
+                      {getInitials(user.nama_lengkap || user.username || user.email || 'Unknown User')}
                     </AvatarFallback>
                   </Avatar>
                   <div className={cn("flex-1 min-w-0", isCollapsed && "lg:hidden")}>
                     <p className="text-sm font-medium text-gray-900 truncate text-left">
-                      {user.nama_lengkap}
+                      {user.nama_lengkap || user.username || user.email || 'Unknown User'}
                     </p>
                     <p className="text-xs text-gray-500 truncate text-left">
-                      {user.jabatan} • {user.role === 'admin' ? 'Administrator' : 'User'}
+                      {user.jabatan || 'Staff'} • {user.role === 'admin' ? 'Administrator' : 'User'}
                     </p>
                   </div>
                 </div>
@@ -258,9 +259,9 @@ export function Sidebar({ user, isOpen = true, isCollapsed = false, onClose, onT
             <DropdownMenuContent className="w-56 mb-2" align="start" side="top">
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{user.nama_lengkap}</p>
+                  <p className="text-sm font-medium leading-none">{user.nama_lengkap || user.username || user.email || 'Unknown User'}</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {user.jabatan} • {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                    {user.jabatan || 'Staff'} • {user.role?.charAt(0).toUpperCase() + user.role?.slice(1) || 'User'}
                   </p>
                 </div>
               </DropdownMenuLabel>

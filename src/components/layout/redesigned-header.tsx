@@ -329,7 +329,7 @@ export function RedesignedHeader({ user, onMenuToggle, onSidebarToggle, sidebarC
               <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                 <Avatar className="h-10 w-10">
                   <AvatarFallback className="bg-blue-100 text-blue-600 font-medium">
-                    {getInitials(user.nama_lengkap)}
+                    {getInitials(user.nama_lengkap || user.username || user.email || 'Unknown User')}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -337,9 +337,9 @@ export function RedesignedHeader({ user, onMenuToggle, onSidebarToggle, sidebarC
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{user.nama_lengkap}</p>
+                  <p className="text-sm font-medium leading-none">{user.nama_lengkap || user.username || user.email || 'Unknown User'}</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {user.jabatan} • {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                    {user.jabatan || 'Staff'} • {user.role?.charAt(0).toUpperCase() + user.role?.slice(1) || 'User'}
                   </p>
                 </div>
               </DropdownMenuLabel>

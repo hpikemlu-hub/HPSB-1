@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: 'export', // Disabled for Netlify deployment with API routes
+  output: 'standalone', // Enable for Docker deployment
   trailingSlash: true,
   images: {
     unoptimized: true
