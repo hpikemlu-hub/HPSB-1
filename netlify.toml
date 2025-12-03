@@ -1,5 +1,5 @@
 [build]
-  command = "npm run deploy-prep && npm run build"
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]
@@ -17,7 +17,7 @@
 
 # Force a new build if these files change
 [context.production]
-  command = "npm run deploy-prep && npm run build"
+  command = "npm run build"
 
 # Environment variables for production
 # Add these in Netlify dashboard:
