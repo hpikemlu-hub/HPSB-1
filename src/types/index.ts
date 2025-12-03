@@ -233,8 +233,11 @@ export interface WorkloadFilters {
   type?: string;
   status?: string;
   fungsi?: string;
+  deskripsi?: string;
   start_date?: string;
   end_date?: string;
+  dateFrom?: string;
+  dateTo?: string;
 }
 
 // Pagination Types

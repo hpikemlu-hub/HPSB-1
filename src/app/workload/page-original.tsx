@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Plus, Download, Filter, Search, RefreshCw, Upload, Activity, User } from 'lucide-react';
+import { Plus, Download, Filter, Search, RefreshCw, Upload, Activity, User as UserIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import type { User, Workload, WorkloadFilters as WorkloadFiltersType } from '@/types';
 import '@/styles/workload-enhancements.css';
@@ -347,7 +347,7 @@ export default function WorkloadPage() {
                 {user.role === 'user' && (
                   <div className="flex items-center space-x-3">
                     <Badge variant="outline" className="bg-gradient-to-r from-green-50 to-green-100 border-green-200 text-green-700 px-4 py-2">
-                      <User className="w-4 h-4 mr-2" />
+                      <UserIcon className="w-4 h-4 mr-2" />
                       Mode Pegawai: Kelola Workload Sendiri
                     </Badge>
                   </div>
@@ -411,6 +411,8 @@ export default function WorkloadPage() {
               filters={filters}
               onFiltersChange={setFilters}
               onClearFilters={handleClearFilters}
+              totalRecords={workloads.length}
+              filteredRecords={workloads.length}
             />
           </div>
 

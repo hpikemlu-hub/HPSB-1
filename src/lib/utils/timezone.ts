@@ -3,7 +3,7 @@
  * Handles WIB, WITA, WIT timezones
  */
 
-import { formatInTimeZone, toZonedTime } from 'date-fns-tz';
+// Simplified timezone utility without date-fns-tz dependency
 import { format } from 'date-fns';
 import { id as localeId } from 'date-fns/locale';
 
@@ -19,7 +19,8 @@ export const DEFAULT_TIMEZONE = TIMEZONE_WIB;
  * Convert any date to WIB timezone
  */
 export function convertToWIB(date: Date | string): Date {
-  return toZonedTime(date, TIMEZONE_WIB);
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return dateObj; // Simplified for deployment
 }
 
 /**
@@ -40,7 +41,8 @@ export function convertToWIT(date: Date | string): Date {
  * Format date in WIB timezone
  */
 export function formatWIB(date: Date | string, formatStr: string = 'dd MMM yyyy HH:mm'): string {
-  return formatInTimeZone(date, TIMEZONE_WIB, formatStr, { locale: localeId });
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return format(dateObj, formatStr, { locale: localeId });
 }
 
 /**

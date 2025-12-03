@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -21,6 +22,7 @@ import {
   TrendingUp, 
   TrendingDown,
   Users, 
+  User as UserIcon,
   Clock, 
   CheckCircle2, 
   AlertCircle, 
@@ -36,11 +38,14 @@ import {
   Minimize2
 } from 'lucide-react';
 import Link from 'next/link';
+import { MainLayout } from '@/components/layout/main-layout';
 import type { Workload, WorkloadFilters as WorkloadFiltersType, User, DashboardStats } from '@/types';
 import { toast } from 'sonner';
 import '@/styles/modern-workload-management.css';
 
 export default function WorkloadPageRedesigned() {
+  const router = useRouter();
+  
   // State management with enhanced features
   const [workloads, setWorkloads] = useState<Workload[]>([]);
   const [filteredWorkloads, setFilteredWorkloads] = useState<Workload[]>([]);
@@ -48,6 +53,7 @@ export default function WorkloadPageRedesigned() {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [dashboardStats, setDashboardStats] = useState<DashboardStats | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(15);
@@ -357,7 +363,7 @@ export default function WorkloadPageRedesigned() {
       
       // Re-fetch data to ensure UI consistency
       console.log(`🔄 Re-fetching data to ensure UI consistency...`);
-      await loadWorkloads();
+      await fetchWorkloads();
       
       throw error; // Re-throw to let dialog handle the error state
     }
@@ -380,8 +386,8 @@ export default function WorkloadPageRedesigned() {
     total: workloads.length,
     pending: workloads.filter(w => w.status === 'pending').length,
     inProgress: workloads.filter(w => w.status === 'on-progress').length,
-    completed: workloads.filter(w => w.status === 'completed').length,
-    overdue: workloads.filter(w => w.status === 'overdue').length
+    completed: workloads.filter(w => w.status === 'done').length,
+    overdue: workloads.filter(w => w.status === 'pending' && w.tgl_deadline && new Date(w.tgl_deadline) < new Date()).length
   };
 
   if (loading || !user) {
@@ -408,11 +414,12 @@ export default function WorkloadPageRedesigned() {
           
           {/* REDESIGNED: Filter Section moved to TOP */}
           <div className={`transform transition-all motion-reduce:transition-none duration-700 ease-out ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-            <RedesignedWorkloadFilters
+            <EnhancedWorkloadFilters
               filters={filters}
               onFiltersChange={setFilters}
               onClearFilters={handleClearFilters}
-              workloadStats={stats}
+              totalRecords={workloads.length}
+              filteredRecords={filteredWorkloads.length}
             />
           </div>
 
@@ -424,7 +431,7 @@ export default function WorkloadPageRedesigned() {
               <div className="flex flex-col sm:flex-row gap-3 justify-end mb-8">
                 {user.role === 'user' && (
                   <Badge variant="outline" className="bg-gradient-to-r from-emerald-50 to-emerald-100 border-emerald-200 text-emerald-700 px-4 py-2.5 hover:from-emerald-100 hover:to-emerald-150 transition-all duration-300">
-                    <User className="w-4 h-4 mr-2" />
+                    <UserIcon className="w-4 h-4 mr-2" />
                     Mode Pegawai
                   </Badge>
                 )}
@@ -432,11 +439,11 @@ export default function WorkloadPageRedesigned() {
                 <Button
                   variant="outline"
                   onClick={handleRefresh}
-                  disabled={isRefreshing}
+                  disabled={refreshing}
                   className="border-slate-300 hover:bg-slate-50 hover:border-slate-400 transition-all duration-300 group"
                 >
-                  <RefreshCw className={`h-4 w-4 mr-2 transition-transform duration-300 ${isRefreshing ? 'animate-spin' : 'group-hover:rotate-180'}`} />
-                  {isRefreshing ? 'Memperbarui...' : 'Refresh'}
+                  <RefreshCw className={`h-4 w-4 mr-2 transition-transform duration-300 ${refreshing ? 'animate-spin' : 'group-hover:rotate-180'}`} />
+                  {refreshing ? 'Memperbarui...' : 'Refresh'}
                 </Button>
                 
                 <Button
@@ -525,7 +532,7 @@ export default function WorkloadPageRedesigned() {
               onEdit={handleEdit}
               onDelete={handleDelete}
               onView={handleView}
-              isLoading={isLoadingWorkloads}
+              isLoading={refreshing}
               currentUser={user}
             />
           </div>
