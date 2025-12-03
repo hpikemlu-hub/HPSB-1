@@ -5,22 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-build-info.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "cleanup-demo": "node scripts/cleanup-demo-data.js",
-    "import-csv": "node scripts/import-csv-data.js",
-    "import-excel": "node scripts/import-excel-data.js",
-    "reset-and-import-csv": "node scripts/cleanup-demo-data.js && node scripts/import-csv-data.js",
-    "reset-and-import-excel": "node scripts/cleanup-demo-data.js && node scripts/import-excel-data.js",
-    "test:qa-calendar": "node qa-testing/test-scripts/automated-test-runner.js",
-    "test:qa-integration": "node qa-testing/test-scripts/verify-integration.js",
-    "test:qa-smoke": "bash qa-testing/test-scripts/quick-smoke-test.sh",
-    "test:qa-all": "npm run test:qa-smoke && npm run test:qa-integration",
-    "export": "next export",
-    "netlify-build": "npm run build && npm run export",
-    "provision-users": "node scripts/provision-users.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
