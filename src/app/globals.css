@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "../styles/under-development.css";
 @import "../styles/professional-badges.css";
-@import "tw-animate-css";
 
 /* Professional Employee Edit Modal Animations */
 @import "../styles/professional-employee-edit.css";
