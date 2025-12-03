@@ -14,7 +14,7 @@ import {
   Download, 
   Upload, 
   Activity, 
-  User, 
+  User as UserIcon, 
   RefreshCw,
   TrendingUp,
   Clock,
@@ -321,8 +321,8 @@ export default function WorkloadPageRedesigned() {
     total: workloads.length,
     pending: workloads.filter(w => w.status === 'pending').length,
     inProgress: workloads.filter(w => w.status === 'on-progress').length,
-    completed: workloads.filter(w => w.status === 'completed').length,
-    overdue: workloads.filter(w => w.status === 'overdue').length
+    completed: workloads.filter(w => w.status === 'done').length,
+    overdue: workloads.filter(w => w.status === 'pending' && w.tgl_deadline && new Date(w.tgl_deadline) < new Date()).length
   };
 
   if (loading || !user) {
@@ -384,7 +384,7 @@ export default function WorkloadPageRedesigned() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   {user.role === 'user' && (
                     <Badge variant="outline" className="bg-gradient-to-r from-emerald-50 to-emerald-100 border-emerald-200 text-emerald-700 px-4 py-2.5 hover:from-emerald-100 hover:to-emerald-150 transition-all duration-300">
-                      <User className="w-4 h-4 mr-2" />
+                      <UserIcon className="w-4 h-4 mr-2" />
                       Mode Pegawai
                     </Badge>
                   )}

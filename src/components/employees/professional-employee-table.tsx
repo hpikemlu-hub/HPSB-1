@@ -460,7 +460,7 @@ export function ProfessionalEmployeeTable({
       <EmployeeCascadeDeletionModal
         isOpen={isDeleteModalOpen}
         onClose={handleCloseDeleteModal}
-        onDeleteSuccess={handleDeleteSuccess}
+        onSuccess={handleDeleteSuccess}
         employee={deletingEmployee}
       />
     </div>

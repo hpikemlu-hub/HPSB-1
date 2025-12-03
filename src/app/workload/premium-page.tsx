@@ -289,8 +289,8 @@ export default function PremiumWorkloadPage() {
     total: workloads.length,
     pending: workloads.filter(w => w.status === 'pending').length,
     inProgress: workloads.filter(w => w.status === 'on-progress').length,
-    completed: workloads.filter(w => w.status === 'completed').length,
-    overdue: workloads.filter(w => w.status === 'overdue').length
+    completed: workloads.filter(w => w.status === 'done').length,
+    overdue: workloads.filter(w => w.status === 'pending' && w.tgl_deadline && new Date(w.tgl_deadline) < new Date()).length
   };
 
   const completionRate = stats.total > 0 ? Math.round((stats.completed / stats.total) * 100) : 0;

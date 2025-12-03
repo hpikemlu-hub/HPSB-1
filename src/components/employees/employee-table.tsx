@@ -279,7 +279,7 @@ export function EmployeeTable({ employees, onEmployeeDeletion, currentUser }: Em
 
                       {/* Status */}
                       <TableCell className="text-center py-4">
-                        <ProfessionalBadge {...getStatusBadgeProps(employee.is_active)} size="md" />
+                        <ProfessionalBadge {...getStatusBadgeProps(employee.is_active ?? true)} size="md" />
                       </TableCell>
 
                       {/* Actions - NAVIGATION ONLY, NO POPUPS */}

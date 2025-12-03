@@ -259,7 +259,7 @@ export function EmployeeTable({ employees, onEmployeeUpdate, onEmployeeDeletion 
                         hover:shadow-md hover:border-blue-300/50 hover:scale-[1.01] 
                         transition-all duration-300 ease-out group cursor-pointer
                         animate-in slide-in-from-left-4 fade-in-50
-                        ${styling.bgColor} ${styling.borderColor}
+                        ${styling.bgColor}
                       `}
                       style={{ animationDelay: `${index * 50}ms` }}
                     >

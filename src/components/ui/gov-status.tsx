@@ -89,7 +89,7 @@ export function GovStatusIndicator({
       ${config.color}
       ${config.bgColor}
       ${config.borderColor}
-      ${animated && config.animated ? 'animate-pulse' : ''}
+      ${animated ? 'animate-pulse' : ''}
       ${className}
     `}>
       <Icon className={iconSizes[size]} />

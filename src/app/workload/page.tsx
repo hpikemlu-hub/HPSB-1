@@ -9,8 +9,8 @@ import { Progress } from '@/components/ui/progress'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import WorkloadTable from '@/components/workload/workload-table'
-import WorkloadFilters from '@/components/workload/workload-filters'
+import { WorkloadTable } from '@/components/workload/workload-table'
+import { WorkloadFilters } from '@/components/workload/workload-filters'
 import { EnhancedWorkloadTable } from '@/components/workload/enhanced-workload-table'
 import { EnhancedWorkloadFilters } from '@/components/workload/enhanced-workload-filters'
 import { supabase } from '@/lib/supabase/client'
@@ -552,6 +552,9 @@ export default function ProfessionalWorkloadPage() {
               // Apply filters to workloads
               applyFiltersToWorkloads(newFilters)
             }}
+            onClearFilters={() => setFilters({})}
+            totalRecords={workloads.length}
+            filteredRecords={workloads.length}
           />
         </div>
 

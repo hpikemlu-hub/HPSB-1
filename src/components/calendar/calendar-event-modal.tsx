@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from 'react';
 import { X, Calendar, MapPin, Users, FileText, Clock } from 'lucide-react';
+import type { EventType } from '@/types';
 import {
   Dialog,
   DialogContent,
@@ -69,7 +70,7 @@ export function CalendarEventModal({
     location: '',
     participants: [],
     category: '',
-    event_type: '',
+    event_type: 'kegiatan' as EventType,
     color: '#0ea5e9',
     dipa: '',
   });
@@ -86,7 +87,7 @@ export function CalendarEventModal({
         location: event.location || '',
         participants: event.participants || [],
         category: event.event_type || '',
-        event_type: event.event_type || '',
+        event_type: event.event_type || ('kegiatan' as EventType),
         color: event.color || '#0ea5e9',
         dipa: event.dipa || '',
       });
@@ -100,7 +101,7 @@ export function CalendarEventModal({
         location: '',
         participants: [],
         category: '',
-        event_type: '',
+        event_type: 'kegiatan' as EventType,
         color: '#0ea5e9',
         dipa: '',
       });
@@ -160,7 +161,7 @@ export function CalendarEventModal({
       // Map UI category to backend event_type
       const payload = {
         ...formData,
-        event_type: formData.category || formData.event_type || undefined,
+        event_type: (formData.category || formData.event_type || 'kegiatan') as EventType,
       };
       await onSubmit(payload);
       toast.success(mode === 'create' ? 'Event berhasil dibuat' : 'Event berhasil diperbarui');

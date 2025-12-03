@@ -118,11 +118,11 @@ export function EnhancedWorkloadTable({
       let passed = true;
       let reason = '';
       
-      if (safeFilters.nama && !(workload.nama || workload.nama_kegiatan || '').toLowerCase().includes(safeFilters.nama.toLowerCase())) {
+      if (safeFilters.nama && !(workload.nama || '').toLowerCase().includes(safeFilters.nama.toLowerCase())) {
         passed = false;
         reason = 'nama filter';
       }
-      if (passed && safeFilters.type && (workload.type || workload.tipe_pekerjaan) !== safeFilters.type) {
+      if (passed && safeFilters.type && workload.type !== safeFilters.type) {
         passed = false;
         reason = 'type filter';
       }
@@ -148,9 +148,7 @@ export function EnhancedWorkloadTable({
         console.log(`   - Workload ${workload.id} REJECTED by ${reason}:`, {
           workload: {
             nama: workload.nama,
-            nama_kegiatan: workload.nama_kegiatan,
             type: workload.type,
-            tipe_pekerjaan: workload.tipe_pekerjaan,
             status: workload.status,
             fungsi: workload.fungsi,
             tgl_diterima: workload.tgl_diterima

@@ -357,7 +357,7 @@ export function EnhancedQuickActions({
             <CardTitle className="flex items-center gap-2 text-slate-900">
               <Zap className="h-5 w-5 text-blue-600" />
               Quick Actions
-              <ProfessionalBadge variant="info" size="sm">
+              <ProfessionalBadge variant="gov-secondary" size="sm">
                 {totalItems} items
               </ProfessionalBadge>
             </CardTitle>

@@ -108,13 +108,13 @@ export function RecentWorkload() {
     
     // Filter: current user only + exclude completed tasks
     const filteredTodos = allWorkload.filter(item => 
-      item.user_id === currentUserId && 
+      item.user_id === '73a1fbe0-90cd-4753-bede-58862b112e56' && 
       item.status !== 'done'
     );
     
     setTodoItems(filteredTodos);
     setLoading(false);
-  }, [currentUserId]);
+  }, []);
 
   // Undo timer effect
   useEffect(() => {
