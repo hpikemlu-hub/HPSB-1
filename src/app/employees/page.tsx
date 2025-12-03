@@ -411,7 +411,7 @@ export default function EmployeesPage() {
             <EmployeeTable 
               employees={filteredEmployees}
               onEmployeeDeletion={handleEmployeeDeletion}
-              currentUser={user}
+              currentUser={user as unknown as User}
             />
           </div>
 

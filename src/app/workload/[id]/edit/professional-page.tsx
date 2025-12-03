@@ -323,7 +323,7 @@ export default function ProfessionalWorkloadEditPage({ params }: ProfessionalWor
                           placeholder="Enter task owner name"
                           validation={
                             errors.nama ? 
-                              { state: 'error', message: errors.nama.message } :
+                              { state: 'error', message: errors.nama.message || 'Invalid name' } :
                             watchedValues.nama && !errors.nama ?
                               { state: 'success', message: 'Valid name format' } :
                               undefined
@@ -342,7 +342,7 @@ export default function ProfessionalWorkloadEditPage({ params }: ProfessionalWor
                           {...register('type')}
                           options={WORKLOAD_TYPES.map(type => ({ value: type, label: type }))}
                           placeholder="Select task type"
-                          validation={errors.type ? { state: 'error', message: errors.type.message } : undefined}
+                          validation={errors.type ? { state: 'error', message: errors.type.message || 'Invalid type' } : undefined}
                         />
                       </GovFormField>
                     </GovFormGrid>
@@ -359,7 +359,7 @@ export default function ProfessionalWorkloadEditPage({ params }: ProfessionalWor
                         rows={4}
                         characterCount
                         maxLength={500}
-                        validation={errors.deskripsi ? { state: 'error', message: errors.deskripsi.message } : undefined}
+                        validation={errors.deskripsi ? { state: 'error', message: errors.deskripsi.message || 'Invalid description' } : undefined}
                       />
                     </GovFormField>
                   </GovFormSection>
@@ -384,7 +384,7 @@ export default function ProfessionalWorkloadEditPage({ params }: ProfessionalWor
                           ...FUNGSI_OPTIONS.map(fungsi => ({ value: fungsi, label: fungsi }))
                         ]}
                         placeholder="Select responsible function"
-                        validation={errors.fungsi ? { state: 'error', message: errors.fungsi.message } : undefined}
+                        validation={errors.fungsi ? { state: 'error', message: errors.fungsi.message || 'Invalid function' } : undefined}
                       />
                     </GovFormField>
                   </GovFormSection>
@@ -406,7 +406,7 @@ export default function ProfessionalWorkloadEditPage({ params }: ProfessionalWor
                         <GovInput
                           {...register('tgl_diterima')}
                           type="date"
-                          validation={errors.tgl_diterima ? { state: 'error', message: errors.tgl_diterima.message } : undefined}
+                          validation={errors.tgl_diterima ? { state: 'error', message: errors.tgl_diterima.message || 'Invalid date' } : undefined}
                         />
                       </GovFormField>
 

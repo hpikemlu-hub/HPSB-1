@@ -275,7 +275,7 @@ export default function ProfessionalEmployeeEditPage({ params }: ProfessionalEmp
                           placeholder="employee@example.com"
                           validation={
                             errors.email ? 
-                              { state: 'error', message: errors.email.message } :
+                              { state: 'error', message: errors.email.message || 'Invalid email' } :
                             watchedValues.email && !errors.email ?
                               { state: 'success', message: 'Valid email format' } :
                               undefined
@@ -292,7 +292,7 @@ export default function ProfessionalEmployeeEditPage({ params }: ProfessionalEmp
                         <GovInput
                           {...register('username')}
                           placeholder="Enter username"
-                          validation={errors.username ? { state: 'error', message: errors.username.message } : undefined}
+                          validation={errors.username ? { state: 'error', message: errors.username.message || 'Invalid username' } : undefined}
                         />
                       </GovFormField>
                     </GovFormGrid>
@@ -316,7 +316,7 @@ export default function ProfessionalEmployeeEditPage({ params }: ProfessionalEmp
                           {...register('golongan')}
                           options={GOLONGAN_OPTIONS.map(g => ({ value: g, label: g }))}
                           placeholder="Select golongan rank"
-                          validation={errors.golongan ? { state: 'error', message: errors.golongan.message } : undefined}
+                          validation={errors.golongan ? { state: 'error', message: errors.golongan.message || 'Invalid golongan' } : undefined}
                         />
                       </GovFormField>
 
@@ -330,7 +330,7 @@ export default function ProfessionalEmployeeEditPage({ params }: ProfessionalEmp
                           {...register('jabatan')}
                           options={JABATAN_OPTIONS.map(j => ({ value: j, label: j }))}
                           placeholder="Select position"
-                          validation={errors.jabatan ? { state: 'error', message: errors.jabatan.message } : undefined}
+                          validation={errors.jabatan ? { state: 'error', message: errors.jabatan.message || 'Invalid jabatan' } : undefined}
                         />
                       </GovFormField>
                     </GovFormGrid>
@@ -356,7 +356,7 @@ export default function ProfessionalEmployeeEditPage({ params }: ProfessionalEmp
                           { value: 'user', label: 'User - Standard Access' },
                           { value: 'admin', label: 'Administrator - Full Access' }
                         ]}
-                        validation={errors.role ? { state: 'error', message: errors.role.message } : undefined}
+                        validation={errors.role ? { state: 'error', message: errors.role.message || 'Invalid role' } : undefined}
                       />
                     </GovFormField>
 

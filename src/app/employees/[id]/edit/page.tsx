@@ -129,7 +129,7 @@ export default function EditEmployeePage({ params }: EditEmployeePageProps) {
     <MainLayout user={user}>
       <ProfessionalEmployeeEditForm
         employee={employee}
-        currentUser={user}
+        currentUser={user as unknown as User}
         onSubmit={handleSubmit}
         isSubmitting={isSubmitting}
       />

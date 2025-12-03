@@ -97,17 +97,16 @@ export default function EnhancedProfessionalWorkloadPage() {
         const searchLower = searchQuery.toLowerCase();
         const matchesSearch = 
           item.nama?.toLowerCase().includes(searchLower) ||
-          item.jenis_kegiatan?.toLowerCase().includes(searchLower) ||
-          item.bentuk_kegiatan?.toLowerCase().includes(searchLower) ||
-          item.fungsi?.toLowerCase().includes(searchLower) ||
-          item.uraian?.toLowerCase().includes(searchLower);
+          item.type?.toLowerCase().includes(searchLower) ||
+          item.deskripsi?.toLowerCase().includes(searchLower) ||
+          item.fungsi?.toLowerCase().includes(searchLower);
         
         if (!matchesSearch) return false;
       }
 
       // Apply filters
       if (filters.nama && !item.nama?.toLowerCase().includes(filters.nama.toLowerCase())) return false;
-      if (filters.type && item.jenis_kegiatan !== filters.type) return false;
+      if (filters.type && item.type !== filters.type) return false;
       if (filters.status && item.status !== filters.status) return false;
       if (filters.fungsi && item.fungsi !== filters.fungsi) return false;
       

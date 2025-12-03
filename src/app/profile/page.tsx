@@ -264,7 +264,7 @@ export default function ProfilePage() {
                       <div className="relative inline-block">
                         <Avatar className="w-40 h-40 border-4 border-white shadow-2xl">
                           <AvatarFallback className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white text-4xl font-black">
-                            {user.full_name ? user.full_name.split(' ').map(n => n[0]).join('') : user.email.charAt(0).toUpperCase()}
+                            {user.nama_lengkap ? user.nama_lengkap.split(' ').map(n => n[0]).join('') : user.email.charAt(0).toUpperCase()}
                           </AvatarFallback>
                         </Avatar>
                         <div className="absolute -bottom-3 -right-3 bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-full shadow-lg cursor-not-allowed opacity-70 hover:opacity-50 transition-opacity">
@@ -275,7 +275,7 @@ export default function ProfilePage() {
                         </div>
                       </div>
                       <h2 className="text-3xl font-black text-gray-900 mt-6">
-                        {user.full_name || 'Professional Government Employee'}
+                        {user.nama_lengkap || 'Professional Government Employee'}
                       </h2>
                       <p className="text-gray-600 font-semibold text-lg">{user.email}</p>
                       <div className="mt-4 flex flex-wrap justify-center gap-3">
@@ -294,7 +294,7 @@ export default function ProfilePage() {
                       {[
                         { icon: Mail, label: "Official Email", value: user.email, color: "blue" },
                         { icon: Shield, label: "Access Level", value: user.role || 'Standard Government Access', color: "green" },
-                        { icon: Calendar, label: "Account Created", value: user.created_at ? new Date(user.created_at).toLocaleDateString('id-ID') : 'Recently Registered', color: "purple" },
+                        { icon: Calendar, label: "Account Created", value: 'Recently Registered', color: "purple" },
                         { icon: Building2, label: "Department", value: 'Direktorat HPI Sosbud', color: "indigo" }
                       ].map((field, index) => (
                         <div key={index} className={`flex items-center gap-4 p-5 bg-white/60 rounded-xl border-2 border-${field.color}-200 shadow-lg dev-hover-lift`}>
@@ -321,11 +321,11 @@ export default function ProfilePage() {
                     
                     <div className="space-y-6">
                       {[
-                        { label: 'Full Name', icon: User, value: user.full_name || 'Will be fully editable', placeholder: 'Enter your complete name' },
+                        { label: 'Full Name', icon: User, value: user.nama_lengkap || 'Will be fully editable', placeholder: 'Enter your complete name' },
                         { label: 'Phone Number', icon: Phone, value: '+62 xxx-xxxx-xxxx', placeholder: 'Government contact number' },
                         { label: 'Office Location', icon: MapPin, value: 'Kemlu Building, Jakarta Pusat', placeholder: 'Primary work location' },
                         { label: 'Department Position', icon: Briefcase, value: 'HPI Sosbud Specialist', placeholder: 'Your role and department' },
-                        { label: 'Employee ID', icon: Badge, value: user.employee_id || 'AUTO-GENERATED-ID', placeholder: 'System generated' }
+                        { label: 'Employee ID', icon: Badge, value: user.id || 'AUTO-GENERATED-ID', placeholder: 'System generated' }
                       ].map((field, index) => (
                         <div key={index} className="space-y-3">
                           <label className="flex items-center gap-3 text-sm font-black text-gray-800 uppercase tracking-wider">

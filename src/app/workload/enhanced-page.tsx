@@ -248,6 +248,8 @@ export default function EnhancedWorkloadPage() {
           filters={filters}
           onFiltersChange={setFilters}
           onClearFilters={handleClearFilters}
+          totalRecords={workloads.length}
+          filteredRecords={workloads.length}
         />
 
         {/* Enhanced Table with Pagination */}
