@@ -145,7 +145,7 @@ export default function NewWorkloadPage() {
                     <span className="text-sm font-medium text-green-700">Sistem Aktif</span>
                   </div>
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-200 rounded-full">
-                    <span className="text-sm font-medium text-blue-700">User: {user.nama_lengkap || user.nama || user.name || user.email}</span>
+                    <span className="text-sm font-medium text-blue-700">User: {user.nama_lengkap || user.email}</span>
                   </div>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function NewWorkloadPage() {
               <WorkloadForm
                 mode="create"
                 defaultValues={{
-                  nama: user.nama_lengkap || user.nama || user.name || user.email,
+                  nama: user.nama_lengkap || user.email,
                   type: 'Administrasi',
                   status: 'pending',
                   tgl_diterima: new Date().toISOString().split('T')[0]

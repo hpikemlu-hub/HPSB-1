@@ -129,7 +129,7 @@ export default function WorkloadPageRedesigned() {
             nama: 'Demo User',
             type: 'Administrasi',
             deskripsi: 'Demo workload - Database tidak tersedia',
-            uraian: 'Demo workload untuk testing UI',
+            // uraian: 'Demo workload untuk testing UI', // Field removed
             status: 'pending',
             tgl_diterima: '2024-12-02',
             tgl_deadline: '2024-12-15',
@@ -143,7 +143,7 @@ export default function WorkloadPageRedesigned() {
             nama: 'Demo User 2',
             type: 'Rapat / Perundingan',
             deskripsi: 'Demo workload 2 - Database tidak tersedia',
-            uraian: 'Demo workload untuk testing fitur',
+            // uraian: 'Demo workload untuk testing fitur', // Field removed
             status: 'on-progress',
             tgl_diterima: '2024-12-02',
             tgl_deadline: '2024-12-10',
@@ -157,7 +157,7 @@ export default function WorkloadPageRedesigned() {
             nama: 'Demo User 3',
             type: 'Tanggapan',
             deskripsi: 'Demo workload 3 - Completed task',
-            uraian: 'Demo completed workload',
+            // uraian: 'Demo completed workload', // Field removed
             status: 'done',
             tgl_diterima: '2024-11-25',
             tgl_deadline: '2024-12-01',
@@ -198,7 +198,7 @@ export default function WorkloadPageRedesigned() {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(workload => 
         workload.nama?.toLowerCase().includes(query) ||
-        workload.uraian?.toLowerCase().includes(query) ||
+        // workload.uraian?.toLowerCase().includes(query) || // Field removed
         workload.deskripsi?.toLowerCase().includes(query) ||
         workload.type?.toLowerCase().includes(query) ||
         workload.fungsi?.toLowerCase().includes(query) ||

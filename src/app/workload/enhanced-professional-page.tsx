@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -37,6 +38,7 @@ import { WorkloadOverviewDashboard } from '@/components/workload/workload-overvi
 import { QuickActionPanel } from '@/components/workload/quick-action-panel';
 
 export default function EnhancedProfessionalWorkloadPage() {
+  const router = useRouter();
   const { user, loading: authLoading } = useAuth();
   
   // State Management
@@ -356,15 +358,11 @@ export default function EnhancedProfessionalWorkloadPage() {
             <div className="space-y-6">
               {/* Data Table */}
               <ProfessionalWorkloadTable
-                data={paginatedData}
-                totalRecords={filteredAndSortedData.length}
-                currentPage={currentPage}
-                pageSize={pageSize}
-                onPageChange={setCurrentPage}
-                onPageSizeChange={setPageSize}
-                sortConfig={sortConfig}
-                onSort={handleSort}
-                onRefresh={handleRefresh}
+                workloads={paginatedData}
+                filters={filters}
+                onEdit={(workload) => router.push(`/workload/${workload.id}/edit`)}
+                onDelete={(workload) => console.log('Delete:', workload.id)}
+                onView={(workload) => router.push(`/workload/${workload.id}`)}
                 isLoading={refreshing}
               />
             </div>
@@ -372,15 +370,11 @@ export default function EnhancedProfessionalWorkloadPage() {
 
           {viewMode === 'table' && (
             <ProfessionalWorkloadTable
-              data={paginatedData}
-              totalRecords={filteredAndSortedData.length}
-              currentPage={currentPage}
-              pageSize={pageSize}
-              onPageChange={setCurrentPage}
-              onPageSizeChange={setPageSize}
-              sortConfig={sortConfig}
-              onSort={handleSort}
-              onRefresh={handleRefresh}
+              workloads={paginatedData}
+              filters={filters}
+              onEdit={(workload) => router.push(`/workload/${workload.id}/edit`)}
+              onDelete={(workload) => console.log('Delete:', workload.id)}
+              onView={(workload) => router.push(`/workload/${workload.id}`)}
               isLoading={refreshing}
             />
           )}

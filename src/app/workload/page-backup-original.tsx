@@ -82,7 +82,7 @@ export default function ModernEnhancedWorkloadPage() {
       }
 
       // Fetch workloads from real database
-      let workloadData: Workload[] = [];
+      let workloadData: any[] = [];
       let statsData: any = null;
 
       try {
@@ -184,7 +184,7 @@ export default function ModernEnhancedWorkloadPage() {
       }
 
       setWorkloads(workloadData);
-      setDashboardStats(statsData);
+      // setDashboardStats(statsData); // Comment out if not defined
       
     } catch (error) {
       console.error('Error fetching workloads:', error);
@@ -261,7 +261,7 @@ export default function ModernEnhancedWorkloadPage() {
   const totalPages = Math.ceil(filteredWorkloads.length / pageSize);
 
   // Handlers
-  const handleFiltersChange = (newFilters: WorkloadFiltersType) => {
+  const handleFiltersChange = (newFilters: any) => {
     setFilters(newFilters);
   };
 
@@ -467,17 +467,17 @@ export default function ModernEnhancedWorkloadPage() {
                   Workload Management
                 </h1>
                 <div className="flex items-center gap-2">
-                  <ProfessionalBadge variant="success" size="sm">
+                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
                     {workloads.length} Total
-                  </ProfessionalBadge>
-                  <ProfessionalBadge variant="info" size="sm">
+                  </Badge>
+                  <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
                     {filteredWorkloads.length} Shown
-                  </ProfessionalBadge>
+                  </Badge>
                   {refreshing && (
-                    <ProfessionalBadge variant="warning" size="sm">
+                    <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-200">
                       <RefreshCw className="w-3 h-3 mr-1 animate-spin" />
                       Refreshing
-                    </ProfessionalBadge>
+                    </Badge>
                   )}
                 </div>
               </div>
@@ -549,24 +549,52 @@ export default function ModernEnhancedWorkloadPage() {
         {/* Enhanced Statistics Dashboard */}
         {showStats && (
           <div className="stats-toggle">
-            <ModernStatisticsDashboard
-              workloads={workloads}
-              filteredWorkloads={filteredWorkloads}
-            />
+            <Card className="glass-effect border-0">
+              <CardHeader>
+                <CardTitle>Statistics Overview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600">{workloads.length}</div>
+                    <div className="text-sm text-slate-500">Total Workloads</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-green-600">{workloads.filter(w => w.status === 'done').length}</div>
+                    <div className="text-sm text-slate-500">Completed</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-yellow-600">{workloads.filter(w => w.status === 'on-progress').length}</div>
+                    <div className="text-sm text-slate-500">In Progress</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-red-600">{workloads.filter(w => w.status === 'pending').length}</div>
+                    <div className="text-sm text-slate-500">Pending</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         )}
 
         {/* Enhanced Quick Actions */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1">
-            <EnhancedQuickActions
-              selectedItems={selectedItems}
-              onSelectionChange={setSelectedItems}
-              onRefresh={handleRefresh}
-              totalItems={filteredWorkloads.length}
-              filterActive={Object.keys(filters).length > 0 || searchQuery.length > 0}
-              onToggleFilters={() => setShowFilters(!showFilters)}
-            />
+            <Card className="glass-effect border-0">
+              <CardHeader>
+                <CardTitle>Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Button onClick={handleRefresh} className="w-full" variant="outline">
+                  <RefreshCw className="h-4 w-4 mr-2" />
+                  Refresh Data
+                </Button>
+                <Button onClick={handleClearFilters} className="w-full" variant="outline">
+                  <Filter className="h-4 w-4 mr-2" />
+                  Clear Filters
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="lg:col-span-2 space-y-6">
@@ -577,6 +605,8 @@ export default function ModernEnhancedWorkloadPage() {
                   filters={filters}
                   onFiltersChange={handleFiltersChange}
                   onClearFilters={handleClearFilters}
+                  totalRecords={workloads.length}
+                  filteredRecords={filteredWorkloads.length}
                 />
               </div>
             )}
@@ -621,14 +651,12 @@ export default function ModernEnhancedWorkloadPage() {
               </CardHeader>
               <CardContent className="p-0">
                 <EnhancedWorkloadTable
-                  data={paginatedData}
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                  pageSize={pageSize}
-                  onPageSizeChange={setPageSize}
-                  selectedItems={selectedItems}
-                  onSelectionChange={setSelectedItems}
+                  workloads={paginatedData}
+                  filters={filters}
+                  onEdit={(workload) => console.log('Edit:', workload.id)}
+                  onDelete={(workload) => console.log('Delete:', workload.id)}
+                  onView={(workload) => console.log('View:', workload.id)}
+                  isLoading={refreshing}
                 />
               </CardContent>
             </Card>

@@ -184,7 +184,7 @@ export default function NewWorkloadPage() {
                   </div>
                   <div>
                     <p className="text-green-800 font-medium">
-                      Creating workload for: {user.nama_lengkap || user.nama || user.name || user.email}
+                      Creating workload for: {user.nama_lengkap || user.email}
                     </p>
                     <p className="text-green-600 text-sm">
                       Your profile information will be automatically assigned to this workload
@@ -204,7 +204,7 @@ export default function NewWorkloadPage() {
             <WorkloadForm
               mode="create"
               defaultValues={{
-                nama: user.nama_lengkap || user.nama || user.name || user.email,
+                nama: user.nama_lengkap || user.email,
                 type: 'Administrasi',
                 status: 'pending',
                 tgl_diterima: new Date().toISOString().split('T')[0]

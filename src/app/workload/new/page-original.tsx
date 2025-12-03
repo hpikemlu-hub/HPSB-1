@@ -127,7 +127,7 @@ export default function NewWorkloadPage() {
           <WorkloadForm
             mode="create"
             defaultValues={{
-              nama: user.nama_lengkap || user.nama || user.name || user.email, // Pre-fill with current user
+              nama: user.nama_lengkap || user.email, // Pre-fill with current user
               type: 'Administrasi',
               status: 'pending',
               tgl_diterima: new Date().toISOString().split('T')[0] // Today's date
