@@ -1,0 +1,26 @@
+[build]
+  command = "npm run deploy-prep && npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# API routes should not be redirected to index.html
+# Use the official Next.js plugin so middleware and routing work correctly
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "nft"
+
+# Force a new build if these files change
+[context.production]
+  command = "npm run deploy-prep && npm run build"
+
+# Environment variables for production
+# Add these in Netlify dashboard:
+# NEXT_PUBLIC_SUPABASE_URL
+# NEXT_PUBLIC_SUPABASE_ANON_KEY
+# SUPABASE_SERVICE_ROLE_KEY

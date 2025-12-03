@@ -1,0 +1,351 @@
+/* Professional Employee Edit Modal - Government Grade Animations */
+
+/* ===== MODAL ENTRANCE ANIMATIONS ===== */
+@keyframes professional-modal-entrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02) translateY(-10px);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes professional-backdrop-fade {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* ===== HEADER ANIMATIONS ===== */
+@keyframes government-logo-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes status-indicator-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* ===== FORM FIELD ANIMATIONS ===== */
+@keyframes professional-field-focus {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  }
+}
+
+@keyframes validation-error-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes validation-success-check {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+/* ===== REAL-TIME PREVIEW ANIMATIONS ===== */
+@keyframes preview-card-update {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes badge-hierarchy-glow {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===== SUCCESS ANIMATION SEQUENCE ===== */
+@keyframes success-celebration {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(1.3) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scale(1.2) rotate(270deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes success-confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ===== LOADING ANIMATIONS ===== */
+@keyframes professional-spinner {
+  0% {
+    transform: rotate(0deg);
+    border-color: #3b82f6 transparent transparent transparent;
+  }
+  25% {
+    border-color: #10b981 #3b82f6 transparent transparent;
+  }
+  50% {
+    border-color: #f59e0b #10b981 #3b82f6 transparent;
+  }
+  75% {
+    border-color: #ef4444 #f59e0b #10b981 #3b82f6;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: #3b82f6 transparent transparent transparent;
+  }
+}
+
+@keyframes loading-dots {
+  0%, 20% {
+    transform: translateY(0);
+    background-color: #94a3b8;
+  }
+  50% {
+    transform: translateY(-8px);
+    background-color: #3b82f6;
+  }
+  80%, 100% {
+    transform: translateY(0);
+    background-color: #94a3b8;
+  }
+}
+
+/* ===== BUTTON HOVER EFFECTS ===== */
+@keyframes button-government-hover {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes save-button-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* ===== UTILITY ANIMATION CLASSES ===== */
+.professional-modal-enter {
+  animation: professional-modal-entrance 0.6s ease-out;
+}
+
+.government-backdrop {
+  animation: professional-backdrop-fade 0.4s ease-out;
+}
+
+.logo-glow {
+  animation: government-logo-glow 3s ease-in-out infinite;
+}
+
+.status-pulse {
+  animation: status-indicator-pulse 2s ease-in-out infinite;
+}
+
+.field-focus {
+  animation: professional-field-focus 0.3s ease-out forwards;
+}
+
+.validation-error {
+  animation: validation-error-shake 0.5s ease-in-out;
+}
+
+.validation-success {
+  animation: validation-success-check 0.4s ease-out;
+}
+
+.preview-update {
+  animation: preview-card-update 0.5s ease-out;
+}
+
+.badge-glow {
+  animation: badge-hierarchy-glow 2s ease-in-out infinite;
+}
+
+.success-celebrate {
+  animation: success-celebration 1.5s ease-out;
+}
+
+.confetti {
+  animation: success-confetti 2s ease-out forwards;
+}
+
+.professional-spinner {
+  animation: professional-spinner 1.5s linear infinite;
+}
+
+.loading-dot {
+  animation: loading-dots 1.4s ease-in-out infinite;
+}
+
+.loading-dot:nth-child(1) { animation-delay: 0s; }
+.loading-dot:nth-child(2) { animation-delay: 0.2s; }
+.loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+.button-hover {
+  animation: button-government-hover 0.3s ease-out forwards;
+}
+
+.save-pulse {
+  animation: save-button-pulse 2s infinite;
+}
+
+/* ===== RESPONSIVE ANIMATIONS ===== */
+@media (max-width: 768px) {
+  @keyframes professional-modal-entrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  .professional-modal-enter {
+    animation-duration: 0.4s;
+  }
+}
+
+/* ===== ACCESSIBILITY PREFERENCES ===== */
+@media (prefers-reduced-motion: reduce) {
+  .professional-modal-enter,
+  .government-backdrop,
+  .logo-glow,
+  .status-pulse,
+  .field-focus,
+  .preview-update,
+  .badge-glow,
+  .button-hover {
+    animation: none;
+  }
+  
+  .validation-error {
+    animation: none;
+    border-color: #ef4444;
+  }
+  
+  .success-celebrate {
+    animation: none;
+    transform: scale(1);
+  }
+}
+
+/* ===== GOVERNMENT GRADE PATTERNS ===== */
+.government-pattern {
+  background-image: 
+    linear-gradient(45deg, rgba(59, 130, 246, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(59, 130, 246, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(59, 130, 246, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(59, 130, 246, 0.05) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  animation: pattern-slide 20s linear infinite;
+}
+
+@keyframes pattern-slide {
+  0% { background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+  100% { background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px; }
+}
+
+/* ===== HIGH CONTRAST SUPPORT ===== */
+@media (prefers-contrast: high) {
+  .professional-modal-enter {
+    border: 2px solid #000;
+  }
+  
+  .field-focus {
+    border: 3px solid #0066cc;
+  }
+  
+  .validation-error {
+    border: 3px solid #cc0000;
+  }
+}
