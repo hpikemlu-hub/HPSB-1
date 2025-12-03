@@ -1,0 +1,42 @@
+{
+  "projectKey": "HPI",
+  "projectName": "HPI Sosbud Workload Platform",
+  "projectType": "software",
+  "lead": "owner@example.com",
+  "defaultAssignee": "Unassigned",
+  "issueTypes": [
+    { "name": "Epic" },
+    { "name": "Story" },
+    { "name": "Task" },
+    { "name": "Bug" },
+    { "name": "Sub-task" }
+  ],
+  "workflow": {
+    "name": "Default Dev Workflow",
+    "statuses": ["To Do", "In Progress", "In Review", "Done"],
+    "transitions": [
+      { "from": "To Do", "to": "In Progress" },
+      { "from": "In Progress", "to": "In Review" },
+      { "from": "In Review", "to": "Done" },
+      { "from": "In Review", "to": "In Progress" },
+      { "from": "In Progress", "to": "To Do" }
+    ]
+  },
+  "boards": [
+    {
+      "name": "Development Board",
+      "type": "scrum",
+      "columns": [
+        { "name": "To Do" },
+        { "name": "In Progress" },
+        { "name": "In Review" },
+        { "name": "Done" }
+      ]
+    }
+  ],
+  "fields": {
+    "priority": ["Highest", "High", "Medium", "Low"],
+    "labels": [],
+    "components": ["Calendar", "Workload", "Employees", "TeamTasks", "EKinerja", "Reports", "Auth", "Database", "Realtime"]
+  }
+}

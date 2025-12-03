@@ -1,0 +1,38 @@
+name: Auto-Complete Business Trips
+
+on:
+  schedule:
+    # Runs daily at 19:00 UTC (02:00 WIB next day)
+    - cron: '0 19 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  auto-complete:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Trigger Auto-Complete API
+        run: |
+          response=$(curl -X POST ${{ secrets.APP_URL }}/api/calendar/auto-complete \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"dry_run": false}' \
+            -w "\n%{http_code}" \
+            -s)
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "HTTP Status: $http_code"
+          echo "Response: $body"
+          
+          if [ "$http_code" -ne 200 ]; then
+            echo "Error: Auto-complete failed with status $http_code"
+            exit 1
+          fi
+          
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "Auto-complete job failed! Check logs."
+          # Add notification logic here (Slack, email, etc.)

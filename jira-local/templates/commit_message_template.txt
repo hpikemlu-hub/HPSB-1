@@ -1,0 +1,5 @@
+type(scope): ringkasan singkat
+
+Body opsional yang menjelaskan perubahan.
+
+Refs: HPI-xxx, HPI-yyy
